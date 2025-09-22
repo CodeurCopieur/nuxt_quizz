@@ -12,7 +12,7 @@ onMounted(() => {
         })
         .then(data => {
             quizz.value = data
-            state.value = 'loaded'
+            state.value = 'idle'
         })
         .catch(err => {
             state.value = 'error'
@@ -27,7 +27,7 @@ onMounted(() => {
         </div>
         
         <div :aria-busy="state === 'loading'">
-            <Quizz :quizz="quizz" />
+            <Quizz :quizz="quizz" v-if="quizz" />
         </div>
     </div>
 </template>
