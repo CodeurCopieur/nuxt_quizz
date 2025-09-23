@@ -11,6 +11,8 @@
   const emit = defineEmits(['answer'])
 
   const answer = ref(null)
+
+  const handleAnswer = computed(() => answer.value !== null)
 </script>
 
 <template>
@@ -32,8 +34,9 @@
 
             </li>
         </ul>
-        {{ answer }}
-        <button class="btn btn-primary">Suivant</button>
+        <button class="btn btn-primary"
+            @click="emit('answer', answer)"
+            :disabled="!handleAnswer">Suivant</button>
     </div>
 </template>
 
